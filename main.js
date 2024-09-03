@@ -49,7 +49,7 @@ async function sendRequest() {
                 "sec-fetch-dest": "empty",
                 "sec-fetch-mode": "cors",
                 "sec-fetch-site": "same-origin",
-                "cookie": "_appen_auth_session=bDJKEZTjtYB6xHpq2fczkKycRMql30Uk; Authorization=eyJhbGciOiJIUzI1NiIsInppcCI6IkRFRiJ9.eNqMUEFuwjAQ_MueMYrtOHFyKkKCVhVFFPUBTrxQI5xYJE0qId7Rz_Q5fUjXggNHRvIeZnd2xnuG7quCEmYhYPP3-8NEInhScE2PS52rjFkcpsfRsb03MIG6tQglF3oCzpJQ68LudhKZNhWy1JqCaV5oZqTETKYit1VCsg67zrXNS5Rs3-evm-e3cTVsvFofVouRZ9lSS-WH2fZjPadx_A5kkguVqkQq8hrwFPVQCvI1_bUpC5HHZn9LcgVLCXelvgOtPvTu8djh1IYOyjOExnj6N9AhGt9ijOiNOxJzO09kP9E1T_vIT-vWw-XyDwAA__8.x_Ah1smWMxl8anaOG2fu9iuzHspZNHiIhyMwFKQZFn4",
+                "cookie": "_appen_auth_session=mkXYUZ9fELXCEc4PAPNnkxSXnbFIi0FJ; Authorization=eyJhbGciOiJIUzI1NiIsInppcCI6IkRFRiJ9.eNqMUMFqwzAM_Red4xLbSWPn1EEpDHYalEFuTqw27hrH1GkzWvod-5l9zj5kypZDj3sgHZ70pCfdIJ5rKOEpBPTfX59MpIKnmisKLlWRL5nFy-I4OrbvDCTQ9Bah5EIl4CwJldJ2t5PIlKmRZdZoprhWzEiJS5mJwtYpySLG6Hr_PEk24zpedRhfDm2O1VbXb9dKn1-r7XvrPPdI7fgRaEkh8izXUmcJXPA06aEUtNcMczHlxVQcZid_YBnhITUPoNGHwf3fdjj1IUJ5g-BNR3cDPcJ3_a_FzrgjMfN7JrZF51f7iV80fQf3-w8AAAD__w.xPA7-3NkbuUxFmx-qWVc8grUdeH0kmEKNRHqfBQ-STg",
                 "Referer": "https://ui.appen.com.cn/v3/worker-job/fab25fee-b440-4031-98de-78fd60e0d1c7?businessType=WORK&from=Ii92My93b3JrZXItam9icy90YXNrcy9pbi1wcm9ncmVzcz9wYWdlSW5kZXg9MSZqb2JOYW1lPSZwYWdlU2l6ZT0xMCI%3D&projectId=30ccc3b5-cda3-4f74-838f-edb915a3610b",
                 "Referrer-Policy": "strict-origin-when-cross-origin"
             },
