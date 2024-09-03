@@ -62,6 +62,7 @@ async function sendRequest() {
         if(data.status===200){
            const responseData = data.data;
            if(responseData.availableTasks>0 || responseData.results.length>0 || responseData.batchNumList.length>0 || responseData.totalElements>0){
+               console.log('Request succeed, message sent.');
                sendMessage();
            }else{
                console.log('Request succeed.');
