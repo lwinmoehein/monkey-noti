@@ -1,9 +1,15 @@
 import fetch from "node-fetch";
-import fs from 'fs/promises';
-import path from 'path';
-import { appendFile } from 'fs/promises';
+import fs, {appendFile} from 'fs/promises';
+import crypto from 'crypto';
+
+function calculateHash(inputString) {
+    const hash = crypto.createHash('sha256').update(inputString);
+    return hash.digest('hex'); // Return the hash in hexadecimal format
+}
+
 
 let shouldKeepRequesting = true;
+let lastCheckSum = "";
 
 const fetchOptionsFilePath =  'options.json';
 const logsFilePath =  'logs.txt';
@@ -22,6 +28,12 @@ async function getFetchOptions() {
     // Parse the JSON data into a JavaScript object
     return JSON.parse(data);
 }
+async function getFetchData() {
+    // Read the JSON file
+    return await fs.readFile(fetchOptionsFilePath, 'utf-8');
+}
+
+
 
 async function sendMessage() {
     const token = '7273799390:AAFcptLnAtvmR4aVNL4APxW-IUt8rL2C8_4';
@@ -76,10 +88,11 @@ async function sendRequest() {
 
         if(data.status!==200){
            console.log('Request failed:'+data.status)
-           writeLogToFile({time:new Date().toISOString(),count:-1000})
+           await writeLogToFile({time: new Date().toISOString(), count: -1000})
            shouldKeepRequesting = false;
         }
-
+        const newFetchData = await getFetchData();
+        lastCheckSum = calculateHash(newFetchData);
     } catch (error) {
         console.log('Request error.')
         shouldKeepRequesting = false;
@@ -88,10 +101,16 @@ async function sendRequest() {
 
 
 function startLoop() {
-    sendRequest();
-    setInterval(()=>{
-        if(shouldKeepRequesting){
-            sendRequest()
+    setInterval(async () => {
+        const newFetchData = await getFetchData();
+        const newFetchOptionCheckSum = calculateHash(newFetchData);
+
+        if (!shouldKeepRequesting) {
+            shouldKeepRequesting = (newFetchOptionCheckSum !== lastCheckSum)
+        }
+
+        if (shouldKeepRequesting) {
+            await sendRequest()
         }
     }, 10000);
 }
