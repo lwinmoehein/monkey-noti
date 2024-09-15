@@ -8,11 +8,19 @@ const fetchOptionsFilePath = 'options.json';
 
 async function writeJsonToFile(json) {
     try {
-        await writeFile(fetchOptionsFilePath,  json);
+        await writeFile(fetchOptionsFilePath,  JSON.stringify(json));
         console.log('File successfully updated');
     } catch (err) {
         console.error('Error writing file:', err);
     }
+}
+function getFetchOptionsFromString(fetchString) {
+    // Remove leading and trailing whitespace
+    fetchString = fetchString.trim();
+
+    fetchString = fetchString.replace("fetch(\"https://ui.appen.com.cn/api-gw/project/v3/job/worker-records\", ","");
+    fetchString = fetchString.replace(");","");
+    return JSON.parse(fetchString);
 }
 
 // Initialize the Express app
@@ -30,13 +38,18 @@ app.get('/', (req, res) => {
 app.post('/submit', (req, res) => {
     const { key, value } = req.body;
 
-    if(key!=="Lmhezk@#MWapp"){
+    if(key!=="Eizin"){
         res.send(`Wrong key.`);
     }
 
-    writeJsonToFile(value)
-
-    res.send(`Updated.`);
+    try{
+        const optionsObject = getFetchOptionsFromString(value);
+        console.log(optionsObject)
+        writeJsonToFile(optionsObject);
+        res.send(`Updated.`);
+    }catch (e) {
+        res.send(`Not correct format.`);
+    }
 });
 app.get('/log', async (req, res) => {
     try {

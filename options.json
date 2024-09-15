@@ -1,18 +1,1 @@
-{
-  "headers": {
-    "accept": "application/json",
-    "accept-language": "en-US,en;q=0.9",
-    "cache-control": "no-cache",
-    "content-type": "application/json;charset=UTF-8",
-    "pragma": "no-cache",
-    "priority": "u=1, i",
-    "sec-fetch-dest": "empty",
-    "sec-fetch-mode": "cors",
-    "sec-fetch-site": "same-origin",
-    "cookie": "_appen_auth_session=Cby3QgeGGysgkybD9eiE06rZaaFBHH1u; Authorization=eyJhbGciOiJIUzI1NiIsInppcCI6IkRFRiJ9.eNqMUDtuwzAMvQtnK7Akx5Y8pUuBTAGaNkC8yRbtqIhtIf70E-QcvUyP04OUQj1k7API4ZGPfOQVhqmEHB68x-7n-4uJWPBYc0XBpcrWKbM4r85vjjWtgQiq3iLkXKgInCWhUtrWtUSmTIkssUYzxbViRkpMZSIyW8YkG3AYXN9tg-QJj5-7w2naHcdZT276KA68nuv9tiieH1-aPbXju6clmUgTLdNkHcGMl6CHXNBeMy5FmcahOC5O_sASwl2q7kCjX0f3f9v-0vsB8iv4zrR0N9AjurbHYLE17kzM8p7AntB1mybwq6pv4Xb7BQAA__8.HLRRGq0GnLPvRVZEBgPJQsnOBhIJMosys4PYgLMWSII",
-    "Referer": "https://ui.appen.com.cn/v3/worker-job/fab25fee-b440-4031-98de-78fd60e0d1c7?businessType=WORK&from=Ii92My93b3JrZXItam9icy90YXNrcy9pbi1wcm9ncmVzcz9wYWdlSW5kZXg9MSZqb2JOYW1lPSZwYWdlU2l6ZT0xMCI%3D&projectId=30ccc3b5-cda3-4f74-838f-edb915a3610b",
-    "Referrer-Policy": "strict-origin-when-cross-origin"
-  },
-  "body": "{\"pageSize\":10,\"pageIndex\":0,\"recordIdList\":null,\"jobId\":\"fab25fee-b440-4031-98de-78fd60e0d1c7\",\"jobType\":\"QA\",\"projectId\":\"30ccc3b5-cda3-4f74-838f-edb915a3610b\"}",
-  "method": "POST"
-}
+{"headers":{"accept":"application/json","accept-language":"en-US,en;q=0.9","cache-control":"no-cache","content-type":"application/json;charset=UTF-8","pragma":"no-cache","priority":"u=1, i","sec-fetch-dest":"empty","sec-fetch-mode":"cors","sec-fetch-site":"same-origin","cookie":"_appen_auth_session=Yn8R1ajrSKvHVgOQeOrmGZVsjNNPuBJA; Authorization=eyJhbGciOiJIUzI1NiIsInppcCI6IkRFRiJ9.eNqMUDtuwzAMvQtnK7AlfyRP7ZCmRo0CLZCho2zRrgLLViPHDRDkHL1Mj9ODVEI9ZOwDyOGRj3zkBdypgRLurcXx5_uL0JgmsUi4j4TxIsuJwmUzfGrSGwkRtJNCKBPKI9DKCzkXqusYEi4bJKmSgvBEcCIZw5yltFBN7GUOndPTWAXJfneu3IPZf9S6lk9YZcOp7ujjbnl9e1n67bNvx7P1SwqapyLLaBHBgsegh5L6vXJei6wQoTivTv5AUo-b1N7Ajz7M-v-27XGyDsoL2FEafzf4R4xmwmDRSD14Zn1PYN9Rj3d94DftZOB6_QUAAP__.cGdghKyOJ7Dfl6937BJ3UJHI0qYo0lJ1G_Uyy3ehEJE","Referer":"https://ui.appen.com.cn/v3/worker-job/fab25fee-b440-4031-98de-78fd60e0d1c7?businessType=WORK&from=Ii92My93b3JrZXItam9icy90YXNrcy9pbi1wcm9ncmVzcz9wYWdlSW5kZXg9MSZqb2JOYW1lPSZwYWdlU2l6ZT0xMCI%3D&projectId=30ccc3b5-cda3-4f74-838f-edb915a3610b","Referrer-Policy":"strict-origin-when-cross-origin"},"body":"{\"pageSize\":10,\"pageIndex\":0,\"recordIdList\":null,\"jobId\":\"fab25fee-b440-4031-98de-78fd60e0d1c7\",\"jobType\":\"QA\",\"projectId\":\"30ccc3b5-cda3-4f74-838f-edb915a3610b\"}","method":"POST"}
