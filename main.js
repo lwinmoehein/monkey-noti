@@ -20,7 +20,20 @@ async function writeLogToFile(newJson) {
     } catch (err) {
     }
 }
+const getDubaiTime = (isoDate) => {
+    const dubaiFormatter = new Intl.DateTimeFormat('en-GB', {
+        timeZone: 'Asia/Dubai',      // Dubai timezone
+        year: 'numeric',
+        month: 'long',               // Full month name
+        day: 'numeric',
+        hour: 'numeric',
+        minute: 'numeric',
+        second: 'numeric',
+        hour12: true                 // 12-hour format (AM/PM)
+    });
 
+    return dubaiFormatter.format(new Date(isoDate));
+};
 async function getFetchOptions() {
     // Read the JSON file
     const data = await fs.readFile(fetchOptionsFilePath, 'utf-8');
@@ -79,16 +92,16 @@ async function sendRequest() {
            if(responseData.availableTasks>0){
                console.log('Request succeed, message sent:'+JSON.stringify(responseData));
                sendMessage();
-               writeLogToFile({time:new Date().toISOString(),count:responseData.availableTasks})
+               writeLogToFile({time:getDubaiTime(new Date().toISOString()),count:responseData.availableTasks})
            }else{
                console.log('Request succeed:'+responseData.availableTasks);
-               writeLogToFile({time:new Date().toISOString(),count:responseData.availableTasks})
+               writeLogToFile({time:getDubaiTime(new Date().toISOString()),count:responseData.availableTasks})
            }
         }
 
         if(data.status!==200){
            console.log('Request failed:'+data.status)
-           await writeLogToFile({time: new Date().toISOString(), count: -1000})
+           await writeLogToFile({time: getDubaiTime(new Date().toISOString()), count: -1000})
            shouldKeepRequesting = false;
         }
         const newFetchData = await getFetchData();
