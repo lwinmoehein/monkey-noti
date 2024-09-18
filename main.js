@@ -48,10 +48,10 @@ async function getFetchData() {
 
 
 
-async function sendMessage() {
+async function sendMessage(msg='Jobs found, Hurry!') {
     const token = '7273799390:AAFcptLnAtvmR4aVNL4APxW-IUt8rL2C8_4';
     const chatId = -4553980792;
-    const message = 'Jobs found, Hurry!';
+    const message = msg;
 
     const url = `https://api.telegram.org/bot${token}/sendMessage`;
     const payload = {
@@ -103,13 +103,23 @@ async function sendRequest() {
            console.log('Request failed:'+data.status)
            await writeLogToFile({time: getDubaiTime(new Date().toISOString()), count: -1000})
            shouldKeepRequesting = false;
+           sendFailMessage()
         }
         const newFetchData = await getFetchData();
         lastCheckSum = calculateHash(newFetchData);
     } catch (error) {
         console.log('Request error.')
         shouldKeepRequesting = false;
+        sendFailMessage()
     }
+}
+
+function sendFailMessage(){
+    sendMessage("Monkey noti stopped. ( First warning )");
+
+    setTimeout(()=>{
+        sendMessage("Monkey noti stopped. ( Second warning )");
+    },30000);
 }
 
 
