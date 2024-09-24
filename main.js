@@ -110,7 +110,7 @@ async function sendRequest() {
     } catch (error) {
         console.log('Request error.')
         shouldKeepRequesting = false;
-        sendFailMessage()
+        //sendFailMessage()
     }
 }
 
