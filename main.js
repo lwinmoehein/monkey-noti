@@ -177,7 +177,11 @@ function sendFailMessage(){
 
 
 function startLoop() {
+    writeLogToFile({time:getDubaiTime(new Date().toISOString()),message:"test log first"});
+
     setInterval(async () => {
+        writeLogToFile({time:getDubaiTime(new Date().toISOString()),message:"test log second"});
+
         const newFetchData = await getFetchData();
         const newFetchOptionCheckSum = calculateHash(newFetchData);
 
@@ -187,6 +191,8 @@ function startLoop() {
 
         if (shouldKeepRequesting) {
             await sendRequest()
+        }else{
+            writeLogToFile({time:getDubaiTime(new Date().toISOString()),message:"should request is false"});
         }
     }, 3000);
 }
