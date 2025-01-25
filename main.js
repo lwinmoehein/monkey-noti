@@ -118,7 +118,8 @@ async function sendRequest() {
         const newFetchData = await getFetchData();
         lastCheckSum = calculateHash(newFetchData);
     } catch (error) {
-        console.log('Request error.')
+        console.log('Request error.');
+        writeLogToFile({time:getDubaiTime(new Date().toISOString()),message:"check request failed"});
         shouldKeepRequesting = false;
         //sendFailMessage()
     }
