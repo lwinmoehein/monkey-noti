@@ -2,7 +2,6 @@ import fetch from "node-fetch";
 import fs, {appendFile} from 'fs/promises';
 import crypto from 'crypto';
 import { log } from "console";
-import res from "express/lib/response";
 
 function calculateHash(inputString) {
     const hash = crypto.createHash('sha256').update(inputString);
@@ -101,11 +100,11 @@ async function sendRequest() {
            if(responseData.availableTasks>0){
                console.log('Request succeed, message sent:'+JSON.stringify(responseData));
                await takeTask();
-               sendMessage();
-               writeLogToFile({time:getDubaiTime(new Date().toISOString()),count:responseData.availableTasks});
+               await sendMessage();
+               await writeLogToFile({time:getDubaiTime(new Date().toISOString()),count:responseData.availableTasks});
            }else{
                console.log('Request succeed:'+responseData.availableTasks);
-               writeLogToFile({time:getDubaiTime(new Date().toISOString()),count:responseData.availableTasks})
+               await writeLogToFile({time:getDubaiTime(new Date().toISOString()),count:responseData.availableTasks})
            }
         }
 
@@ -119,7 +118,7 @@ async function sendRequest() {
         lastCheckSum = calculateHash(newFetchData);
     } catch (error) {
         console.log('Request error.');
-        writeLogToFile({time:getDubaiTime(new Date().toISOString()),message:"check request failed"});
+        await writeLogToFile({time:getDubaiTime(new Date().toISOString()),message:"check request failed"});
         shouldKeepRequesting = false;
         //sendFailMessage()
     }
@@ -177,11 +176,7 @@ function sendFailMessage(){
 
 
 function startLoop() {
-    writeLogToFile({time:getDubaiTime(new Date().toISOString()),message:"test log first"});
-
     setInterval(async () => {
-        writeLogToFile({time:getDubaiTime(new Date().toISOString()),message:"test log second"});
-
         const newFetchData = await getFetchData();
         const newFetchOptionCheckSum = calculateHash(newFetchData);
 
@@ -192,7 +187,7 @@ function startLoop() {
         if (shouldKeepRequesting) {
             await sendRequest()
         }else{
-            writeLogToFile({time:getDubaiTime(new Date().toISOString()),message:"should request is false"});
+            await writeLogToFile({time:getDubaiTime(new Date().toISOString()),message:"should request is false"});
         }
     }, 3000);
 }
