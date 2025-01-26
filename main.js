@@ -156,7 +156,7 @@ async function takeTask() {
             sendMessage('Horray !!! monkey had taken a task.');
         } else {
            if(response.status==304){
-            console.log('tried to take task but not task found.');
+            console.log('tried to take task but no task found.');
             await writeLogToFile({time: getDubaiTime(new Date().toISOString()),message:"tried to take task but not task found."})
            }
         }
