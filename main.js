@@ -179,7 +179,7 @@ function sendFailMessage(){
 function startLoop() {
     setInterval(async () => {
         await takeTask();
-    }, 3000);
+    }, 1000);
 }
 
 startLoop();
