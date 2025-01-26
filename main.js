@@ -1,7 +1,6 @@
 import fetch from "node-fetch";
 import fs, {appendFile} from 'fs/promises';
 import crypto from 'crypto';
-import { log } from "console";
 
 function calculateHash(inputString) {
     const hash = crypto.createHash('sha256').update(inputString);
@@ -156,8 +155,10 @@ async function takeTask() {
             console.log('Horray !!! monkey had taken a task.');
             sendMessage('Horray !!! monkey had taken a task.');
         } else {
-            console.log('Error !!! error while taking available task.');
-            sendMessage('Error !!! error while taking available task.');
+           if(response.status==304){
+            console.log('tried to take task but not task found.');
+            await writeLogToFile({time: getDubaiTime(new Date().toISOString()),message:"tried to take task but not task found."})
+           }
         }
     
     } catch (error) {
@@ -177,18 +178,7 @@ function sendFailMessage(){
 
 function startLoop() {
     setInterval(async () => {
-        const newFetchData = await getFetchData();
-        const newFetchOptionCheckSum = calculateHash(newFetchData);
-
-        if (!shouldKeepRequesting) {
-            shouldKeepRequesting = (newFetchOptionCheckSum !== lastCheckSum)
-        }
-
-        if (shouldKeepRequesting) {
-            await sendRequest()
-        }else{
-            await writeLogToFile({time:getDubaiTime(new Date().toISOString()),message:"should request is false"});
-        }
+        await takeTask();
     }, 3000);
 }
 
