@@ -10,6 +10,7 @@ function calculateHash(inputString) {
 
 let shouldKeepRequesting = true;
 let lastCheckSum = "";
+let takenTaskCount = 0;
 
 const fetchOptionsFilePath =  'options.json';
 const takerUrlFilePath =  'taker.txt';
@@ -154,6 +155,7 @@ async function takeTask() {
         if(response.ok){
             console.log('Horray !!! monkey had taken a task.');
             sendMessage('Horray !!! monkey had taken a task.');
+            takenTaskCount = takenTaskCount+1;
         } else {
            if(response.status==304){
             console.log('tried to take task but no task found.');
@@ -178,7 +180,9 @@ function sendFailMessage(){
 
 function startLoop() {
     setInterval(async () => {
-        await takeTask();
+       if(takenTaskCount<5){
+            await takeTask();
+       }
     }, 1000);
 }
 
